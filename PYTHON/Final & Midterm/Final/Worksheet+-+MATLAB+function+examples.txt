@@ -1,0 +1,60 @@
+Some MATLAB Examples...
+Try out each of these function. Make sure you understand what each line of MATLAB code is doing. To use a function, cut and paste the function into a file of the same name as the function, and run it in MATLAB.
+
+function ret = fibslow( n )
+%FIBSLOW Calculate Fibonacci the slow way
+%   Simply call fib(n-1)+fib(n-2)
+
+    if n <= 2
+        ret = 1;
+    else
+        ret = fibslow(n-1) + fibslow(n-2);
+    end
+end
+
+
+
+function ret = sumin( start, endd, n )
+%SUMIN Calculate sum(i^n) from start to endd inclusive
+    ret = 0;
+    for i = start:endd
+        ret = ret + i^n;
+    end
+end
+
+---
+
+function ret = is_prime( num )
+%IS_PRIME Returns 1 if num is prime, 0 otherwise
+%  Loop through checking values
+    ret = 1;
+    for i = 2:floor(sqrt(num)+1)
+        if mod(num,i) == 0
+            display(i)
+            ret = 0;
+            return
+        end
+    end
+end
+
+---
+
+function [] = sum_to_n()
+% Sum the numbers from 1 to n
+    n = input('Enter a non-negative number, or 0 to quit: ');
+    while n < 0
+        disp('You may not enter a negative number')
+        n = input('Enter a non-negative number, or 0 to quit: ');
+    end
+    while n ~= 0
+        sum = n * (n + 1) / 2;
+        disp(['The sum of the numbers from 1 to ' num2str(n) ' is ' num2str(sum)])
+        n = input('Enter a non-negative number, or 0 to quit: ');
+        while n < 0
+            disp('You may not enter a negative number')
+            n = input('Enter a non-negative number, or 0 to quit: ');
+        end
+    end
+
+    disp('Goodbye')
+end
